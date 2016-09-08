@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gitlab-runner-docker
+  namespace: gitlab
+data:
+  config.toml: |
+    concurrent = 4
+    check_interval = 1
+
+    [[runners]]
+      name = "gitlab-docker-runner"
+      url = "http://gitlab.gitlab/ci"
+      token = ""
+      executor = "docker"
+      [runners.docker]
+        tls_verify = false
+        image = "python:3.5"
+        privileged = true
+        disable_cache = false
+        volumes = ["/cache"]
+      [runners.cache]
+        Type = "s3"
+        ServerAddress = "minio.gitlab"
+        AccessKey = ""
+        SecretKey = ""
+        BucketName = "runner"

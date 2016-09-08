@@ -4,9 +4,9 @@ Manifests to deploy GitLab on Kubernetes
 Installation process described in [blog](http://blog.lwolf.org/post/how-to-easily-deploy-gitlab-on-kubernetes/)
 
 
-TL;DR
+# TL;DR
 
-# Deploying GitLab itself
+## Deploying GitLab itself
 ```
 # create gitlab namespace
 > $ kubectl create -f gitlab-ns.yml
@@ -32,7 +32,7 @@ TL;DR
 
 ```
 
-# Deploying GitLab Runner
+## Deploying GitLab Runner
 
 ```
 # deploy Minio

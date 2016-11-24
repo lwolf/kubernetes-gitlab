@@ -21,7 +21,7 @@ data:
         volumes = ["/cache"]
       [runners.cache]
         Type = "s3"
-        ServerAddress = "minio.gitlab"
+        ServerAddress = "http://minio.gitlab/"
         AccessKey = ""
         SecretKey = ""
         BucketName = "runner"

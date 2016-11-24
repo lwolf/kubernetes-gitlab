@@ -4,4 +4,4 @@ metadata:
   name: tcp-gitlab-configmap
   namespace: gitlab
 data:
-  222: "gitlab/gitlab:22"
+  1022: "gitlab/gitlab:1022"

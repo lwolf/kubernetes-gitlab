@@ -13,7 +13,8 @@ spec:
     spec:
       containers:
       - name: gitlab
-        image: sameersbn/gitlab:8.11.3
+        image: sameersbn/gitlab:8.12.7
+        imagePullPolicy: Always
         env:
         - name: TZ
           value: Europe/Stockholm
@@ -41,7 +42,7 @@ spec:
         - name: GITLAB_SSH_HOST
           value: "ssh-git.example.com"
         - name: GITLAB_SSH_PORT
-          value: "22"
+          value: "1022"
 
         - name: GITLAB_NOTIFY_ON_BROKEN_BUILDS
           value: "true"
@@ -112,15 +113,15 @@ spec:
           name: data
         livenessProbe:
           httpGet:
-            path: /
+            path: /users/sign_in
             port: 80
           initialDelaySeconds: 180
-          timeoutSeconds: 5
+          timeoutSeconds: 15
         readinessProbe:
           httpGet:
-            path: /
+            path: /users/sign_in
             port: 80
-          initialDelaySeconds: 5
+          initialDelaySeconds: 15
           timeoutSeconds: 1
       volumes:
       - name: data

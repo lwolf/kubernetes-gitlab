@@ -3,6 +3,21 @@ Manifests to deploy GitLab on Kubernetes
 
 Installation process described in [blog](http://blog.lwolf.org/post/how-to-easily-deploy-gitlab-on-kubernetes/)
 
+## 2016-11-24 Update #1 after post was published
+
+### Bump versions
+
+* gitlab-runner:v1.8.0
+* gitlab:8.12.7
+* postgresql:9.5-3
+* redis:3.2.4 (official redis container)
+
+### Change in ingress
+
+* SSH is now available through 1022 service post.
+* NGINX settings is now configurable with configmap nginx-settings-configmap.yml.
+ Which currently sets body-size to 0 and increases timeouts to avoid timeouts. 
+
 
 # TL;DR
 
@@ -25,7 +40,9 @@ Installation process described in [blog](http://blog.lwolf.org/post/how-to-easil
 > $ kubectl create -f gitlab/gitlab-deployment.yml
 
 # deploy ingress controller
-> $ kubectl create -f ingress/default-backend.yml
+> $ kubectl create -f ingress/default-backend-svc.yml
+> $ kubectl create -f ingress/default-backend-deployment.yml
+> $ kubectl create -f ingress/nginx-settings-configmap.yml
 > $ kubectl create -f ingress/configmap.yml
 > $ kubectl create -f ingress/nginx-ingress-lb.yml
 > $ kubectl create -f ingress/gitlab-ingress.yml

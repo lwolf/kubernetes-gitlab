@@ -14,11 +14,10 @@ spec:
         backend:
           serviceName: gitlab
           servicePort: 80
-  - host: ssh-git.example.com
+  - host: git-ssh.example.com
     http:
       paths:
       - path: /
         backend:
           serviceName: gitlab
-          servicePort: 222
-
+          servicePort: 1022

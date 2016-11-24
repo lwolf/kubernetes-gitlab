@@ -34,9 +34,10 @@ spec:
           hostPort: 80
         - containerPort: 443
           hostPort: 4443
-        - containerPort: 22
-          hostPort: 222
+        - containerPort: 1022
+          hostPort: 1022
         args:
         - /nginx-ingress-controller
         - --default-backend-service=$(POD_NAMESPACE)/default-http-backend
-        - --tcp-services-configmap=$(POD_NAMESPACE)/tcp-configmap-example
+        - --tcp-services-configmap=$(POD_NAMESPACE)/tcp-ingress-configmap
+        - --nginx-configmap=$(POD_NAMESPACE)/nginx-load-balancer-conf

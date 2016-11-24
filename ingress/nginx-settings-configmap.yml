@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-load-balancer-conf
+  namespace: gitlab
+data:
+  body-size: "0"
+  proxy-connect-timeout: "10"
+  proxy-read-timeout: "360"
+  proxy-send-imeout: "360"

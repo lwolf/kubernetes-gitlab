@@ -35,4 +35,5 @@ spec:
           timeoutSeconds: 1
       volumes:
       - name: data
-        emptyDir: {}
+        persistentVolumeClaim:
+          claimName: gitlab-redis-storage

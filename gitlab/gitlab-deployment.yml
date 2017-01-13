@@ -26,11 +26,23 @@ spec:
             gitlab_rails['db_database']='gitlab_production'
             redis['enable'] = false
             gitlab_rails['redis_host']='gitlab-redis'
+            manage_accounts['enable'] = true
+            manage_storage_directories['manage_etc'] = false
+            gitlab_shell['auth_file'] = '/gitlab-data/ssh/authorized_keys'
+            git_data_dir '/gitlab-data/git-data'
+            gitlab_rails['shared_path'] = '/gitlab-data/shared'
+            gitlab_rails['uploads_directory'] = '/gitlab-data/uploads'
+            gitlab_ci['builds_directory'] = '/gitlab-data/builds'
         ports:
         - name: http
           containerPort: 80
         - name: ssh
           containerPort: 22
+        volumeMounts:
+        - name: config
+          mountPath: /etc/gitlab
+        - name: data
+          mountPath: /gitlab-data
         livenessProbe:
           httpGet:
             path: /help
@@ -47,3 +59,6 @@ spec:
       - name: data
         persistentVolumeClaim:
           claimName: gitlab-rails-storage
+      - name: config
+        persistentVolumeClaim:
+          claimName: gitlab-config-storage

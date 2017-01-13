@@ -1,5 +1,5 @@
 # kubernetes-gitlab
-Manifests to deploy GitLab on Kubernetes 
+Manifests to deploy GitLab on Kubernetes
 
 Installation process described in [blog](http://blog.lwolf.org/post/how-to-easily-deploy-gitlab-on-kubernetes/)
 
@@ -16,7 +16,7 @@ Installation process described in [blog](http://blog.lwolf.org/post/how-to-easil
 
 * SSH is now available through 1022 service post.
 * NGINX settings is now configurable with configmap nginx-settings-configmap.yml.
- Which currently sets body-size to 0 and increases timeouts to avoid timeouts. 
+ Which currently sets body-size to 0 and increases timeouts to avoid timeouts.
 
 
 # TL;DR
@@ -26,17 +26,24 @@ Installation process described in [blog](http://blog.lwolf.org/post/how-to-easil
 # create gitlab namespace
 > $ kubectl create -f gitlab-ns.yml
 
+# create storage
+> $ kubectl create -f gitlab/storage.yml
+
 # deploy redis
 > $ kubectl create -f gitlab/redis-svc.yml
+> $ kubectl create -f gitlab/redis-storage.yml
 > $ kubectl create -f gitlab/redis-deployment.yml
 
 # deploy postgres
 > $ kubectl create -f gitlab/postgresql-svc.yml
+> $ kubectl create -f gitlab/postgresql-storage.yml
 > $ kubectl create -f gitlab/postgresql-deployment.yml
 
 # deploy gitlab itself
 > $ kubectl create -f gitlab/gitlab-svc.yml
 > $ kubectl create -f gitlab/gitlab-svc-nodeport.yml
+> $ kubectl create -f gitlab/gitlab-storage.yml
+> $ kubectl create -f gitlab/gitlab-config-storage.yml
 > $ kubectl create -f gitlab/gitlab-deployment.yml
 
 # deploy ingress controller

@@ -12,14 +12,14 @@ spec:
     spec:
       containers:
       - name: postgresql
-        image: sameersbn/postgresql:9.5-3
+        image: postgres:9.5.3
         imagePullPolicy: Always
         env:
-        - name: DB_USER
+        - name: POSTGRES_USER
           value: gitlab
-        - name: DB_PASS
+        - name: POSTGRES_PASSWORD
           value: +BP52QIxpT/flVCMpL3KXA==
-        - name: DB_NAME
+        - name: POSTGRES_DB
           value: gitlab_production
         - name: DB_EXTENSION
           value: pg_trgm

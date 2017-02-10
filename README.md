@@ -8,7 +8,7 @@ Installation process described in [blog](http://blog.lwolf.org/post/how-to-easil
 ### Bump versions
 
 * gitlab-runner:v1.8.0
-* gitlab:8.12.7
+* gitlab:8.16.3
 * postgresql:9.5-3
 * redis:3.2.4 (official redis container)
 

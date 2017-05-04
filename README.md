@@ -3,6 +3,10 @@ Manifests to deploy GitLab on Kubernetes
 
 Installation process described in [blog](http://blog.lwolf.org/post/how-to-easily-deploy-gitlab-on-kubernetes/)
 
+# Helm chart based on this manifests
+[https://github.com/lwolf/gitlab-chart](https://github.com/lwolf/gitlab-chart)
+
+
 ## 2016-11-24 Update #1 after post was published
 
 ### Bump versions
